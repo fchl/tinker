@@ -96,6 +96,7 @@ class MainActivity : AppCompatActivity() {
     private inner class  MyBroadcastReceiver : BroadcastReceiver() {
           override fun onReceive(p0: Context?, p1: Intent?) {
               if (p1!!.action == "load_succ") {
+
                   Toast.makeText(this@MainActivity, "load succ!", Toast.LENGTH_SHORT).show()
                   updateloadAlert()
               }
