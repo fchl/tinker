@@ -2,7 +2,11 @@ package com.fchl.app.mtinker.service;
 
 import android.app.IntentService;
 import android.content.Intent;
+import android.os.Environment;
 import android.support.annotation.Nullable;
+
+import com.fchl.app.mtinker.util.Fchlutils;
+import com.tencent.tinker.lib.service.AbstractResultService;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -18,13 +22,23 @@ import java.net.URLConnection;
  */
 
 public class LoadApkService extends IntentService {
+    public LoadApkService() {
+        super(LoadApkService.class.getSimpleName());
+    }
     public LoadApkService(String name) {
         super(name);
     }
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
+        try {
+            downloadNet();
+            Intent intents = new Intent("load_succ");
+             sendBroadcast(intents);
 
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -33,12 +47,15 @@ public class LoadApkService extends IntentService {
         int bytesum = 0;
         int byteread = 0;
 
-        URL url = new URL("windine.blogdriver.com/logo.gif");
+        URL url = new URL("https://github.com/fchl/tinker/blob/master/gradle.properties");
 
         try {
             URLConnection conn = url.openConnection();
             InputStream inStream = conn.getInputStream();
-            FileOutputStream fs = new FileOutputStream("c:/abc.gif");
+            Fchlutils.creatSDDir("mTinker");
+    //   TinkerInstaller.onReceiveUpgradePatch(getApplicationContext(), Environment.getExternalStorageDirectory().getAbsolutePath() + "/patch_signed_7zip.apk");
+
+            FileOutputStream fs = new FileOutputStream(Environment.getExternalStorageDirectory().getAbsolutePath()+"/mTinker/patch_signed_7zip.apk");
 
             byte[] buffer = new byte[1204];
             int length;
