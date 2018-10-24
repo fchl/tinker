@@ -55,7 +55,7 @@ public class LoadApkService extends IntentService {
             Fchlutils.creatSDDir("mTinker");
     //   TinkerInstaller.onReceiveUpgradePatch(getApplicationContext(), Environment.getExternalStorageDirectory().getAbsolutePath() + "/patch_signed_7zip.apk");
 
-            FileOutputStream fs = new FileOutputStream(Environment.getExternalStorageDirectory().getAbsolutePath()+"/mTinker/patch_signed_7zip.apk");
+            FileOutputStream fs = new FileOutputStream(Environment.getExternalStorageDirectory().getAbsolutePath()+"/mTinker/patch_signed_7zip1.apk");
 
             byte[] buffer = new byte[1204];
             int length;
