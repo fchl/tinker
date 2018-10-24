@@ -2,6 +2,7 @@ package com.fchl.app.mtinker
 
 import android.content.*
 import android.os.Bundle
+import android.os.Environment
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
@@ -14,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import android.support.v4.content.LocalBroadcastManager
 import android.util.Log
 import com.fchl.app.mtinker.service.LoadApkService
+import com.tencent.tinker.lib.tinker.TinkerInstaller
 
 
 class MainActivity : AppCompatActivity() {
@@ -106,11 +108,9 @@ class MainActivity : AppCompatActivity() {
         AlertDialog.Builder(this)
                 .setMessage("是否要修复bug")
                 .setTitle("修复bug")
-                .setPositiveButton("下载", DialogInterface.OnClickListener { dialogInterface, i ->
-                    //获取intent对象
-                    val inetnt = Intent()
-                    intent.setClass(this,LoadApkService::class.java)
-                    startService(intent)
+                .setPositiveButton("确定", DialogInterface.OnClickListener { dialogInterface, i ->
+                   TinkerInstaller.onReceiveUpgradePatch(getApplicationContext(), Environment.getExternalStorageDirectory().getAbsolutePath() + "/mTinker/patch_signed_7zip.apk");
+
                 })
                 .setNeutralButton("取消", null)
                 .create()
