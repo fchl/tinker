@@ -31,10 +31,9 @@ class MainActivity : AppCompatActivity() {
         AlertDialog.Builder(this)
                 .setMessage("确定触发事件")
                 .setTitle("警告")
-                .setPositiveButton("触发", DialogInterface.OnClickListener { dialogInterface, i ->
-                      patchApk ="true"
-                      10/0;
-                })
+                .setPositiveButton("触发") { dialogInterface, i ->
+                    patchApk ="true"
+                }
                 .setNeutralButton("取消", null)
                 .create()
                 .show()
@@ -45,10 +44,10 @@ class MainActivity : AppCompatActivity() {
     fun loadAlert(){
         AlertDialog.Builder(this)
                 .setMessage("是否要下载更新包")
-                .setTitle("修复bug!!")
-                .setPositiveButton("下载", DialogInterface.OnClickListener { dialogInterface, i ->
+                .setTitle("修复bug!!!")
+                .setPositiveButton("下载") { dialogInterface, i ->
 
-                })
+                }
                 .setNeutralButton("取消", null)
                 .create()
                 .show()
