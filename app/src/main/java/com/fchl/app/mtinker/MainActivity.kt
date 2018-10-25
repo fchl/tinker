@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
     fun loadAlert(){
         AlertDialog.Builder(this)
                 .setMessage("是否要下载更新包")
-                .setTitle("修复bug")
+                .setTitle("修复bug!!")
                 .setPositiveButton("下载", DialogInterface.OnClickListener { dialogInterface, i ->
 
                 })
