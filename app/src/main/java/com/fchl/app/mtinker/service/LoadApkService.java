@@ -47,7 +47,7 @@ public class LoadApkService extends IntentService {
         int bytesum = 0;
         int byteread = 0;
 
-        URL url = new URL("https://github.com/fchl/tinker/blob/master/gradle.properties");
+        URL url = new URL("https://raw.githubusercontent.com/fchl/tinker/master/patch_signed_7zip.apk");
 
         try {
             URLConnection conn = url.openConnection();
@@ -55,13 +55,13 @@ public class LoadApkService extends IntentService {
             Fchlutils.creatSDDir("mTinker");
     //   TinkerInstaller.onReceiveUpgradePatch(getApplicationContext(), Environment.getExternalStorageDirectory().getAbsolutePath() + "/patch_signed_7zip.apk");
 
-            FileOutputStream fs = new FileOutputStream(Environment.getExternalStorageDirectory().getAbsolutePath()+"/mTinker/patch_signed_7zip1.apk");
+            FileOutputStream fs = new FileOutputStream(Environment.getExternalStorageDirectory().getAbsolutePath()+"/mTinker/patch_signed_7zip.apk");
 
             byte[] buffer = new byte[1204];
             int length;
             while ((byteread = inStream.read(buffer)) != -1) {
                 bytesum += byteread;
-                System.out.println(bytesum);
+
                 fs.write(buffer, 0, byteread);
             }
         } catch (FileNotFoundException e) {
